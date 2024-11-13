@@ -1,0 +1,10 @@
+set size ratio 1
+set parametric
+set grid
+set xzeroaxis lt -1
+set yzeroaxis lt -1
+set xrange [-40:40]
+set yrange [-40:40]
+set object 1 circle front at -10,-10 size 10 fillcolor rgb "black" lw 1
+set object 2 circle front at -20,-20 size 10 fillcolor rgb "black" lw 1                                                                                              
+plot "C:\\Users\\Fedor\\Desktop\\VScodeProjects\\StudyC\\lessons\\position.txt" using 1:2 with points pt 7 ps 0.5
