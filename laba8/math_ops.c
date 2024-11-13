@@ -22,6 +22,6 @@ int divide(int a, int b) {
     return a / b;
 }
 
-int main(int a, int b){  // (8) ЛИНКОВКА второе определение функции main multiple definition of `main'
-    return a + b * b;
-}
+// int main(int a, int b){  // (8) ЛИНКОВКА второе определение функции main multiple definition of `main'
+//     return a + b * b;
+// }
