@@ -15,7 +15,7 @@ enum states {
 int main(){
 
     enum states state=SEARCH_OF_START;
-    int k=0, ans=0, c;
+    int k=0, c;
     while (state != END_OF_FILE){
         c = getchar();
 
