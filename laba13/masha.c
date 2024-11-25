@@ -1,15 +1,23 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <ctype.h>
+#include <locale.h>
+#include <wchar.h>
 
 #define ALPHABET_SIZE 34
-
-
 #define SET_BIT(set, idx)   ((set) |= (1ULL << (idx)))
 #define CLEAR_BIT(set, idx) ((set) &= ~(1ULL << (idx)))
 #define TEST_BIT(set, idx)  ((set) & (1ULL << (idx)))
 
-int get_index(char c) {
+void printBinary(uint32_t num) {
+    for (int i = sizeof(uint32_t) * 8 - 1; i >= 0; i--) {
+        printf("%d", (num >> i) & 1);
+    }
+    printf("\n");
+}
+
+int get_index(wchar_t c) {
+    
     c = tolower(c);
     if (c >= 'а' && c <= 'я') {
         return c - 'а';
@@ -19,11 +27,18 @@ int get_index(char c) {
     return -1;
 }
 
+void print(wchar_t *a){
+    setlocale(LC_ALL, "");
+    for (; *a != '\0'; a++){
+        printf("%lc", *a);
+    }
+}
+
 int main() {
     uint64_t bitset = 0;
-
     // Текст для обработки
-    char text[] = "Привет, мир! Ёлка и ёжик.";
+    wchar_t text = L"Привет, мир! Ёлка и ёжик.";
+        
 
     for (int i = 0; text[i] != '\0'; i++) {
         int index = get_index(text[i]);
@@ -31,10 +46,10 @@ int main() {
             SET_BIT(bitset, index);
         }
     }
-    // Проверим, какие буквы встречались
+
     for (int i = 0; i < ALPHABET_SIZE; i++) {
         if (TEST_BIT(bitset, i)) {
-            printf("Буква %c встречается в тексте.\n", (i == 33 ? 'Ё' : 'А' + i));
+            printf(L"Буква %c встречается в тексте.\n", (i == 33 ? 'Ё' : 'А' + i));
         }
     }
 
