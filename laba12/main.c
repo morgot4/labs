@@ -4,13 +4,6 @@ int max(int a, int b){
     return a > b ? a : b;
 }
 
-int pow(int a, int b){
-    int res = 1;
-    for (int i=0; i < b; ++i){
-        res*= a;
-    }
-    return res;
-}
 
 int delLast(int a){
     int i=0,k=0, res=0;
@@ -19,28 +12,28 @@ int delLast(int a){
 }
 
 int Count(int a){
-    int i=0;
+    int i=1;
     while(a){
         a/=10;
-        i++;
+        i*=10;
     }
-    return i;
+    return i / 10;
 }
 
 
 int delSecond(int a){
-    int i=0,k=0, res=0;
     int count = Count(a);
-    return ((a / pow(10, count - 1)) * pow(10, count - 2)) + (a % max(10, pow(10, count - 2)));
+    return ((a / count) * (count / 10) + (a % max(10, count / 10)));
 }
+
 
 
 int del(int a){
     int res=0;
-    if (a < 100){
+    if (a < 100 && a > -100){
         res += a;
     }
-    else if (a < 1000){
+    else if (a < 1000 && a > -1000){
         res = delLast(a);
     
     }
