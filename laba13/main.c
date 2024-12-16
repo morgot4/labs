@@ -38,10 +38,7 @@
 #define CYR_ei 1099
 
 
-#define ALPHABET_SIZE 34
 #define SET_BIT(set, idx)   ((set) |= (1ULL << (idx)))
-#define CLEAR_BIT(set, idx) ((set) &= ~(1ULL << (idx)))
-#define TEST_BIT(set, idx)  ((set) & (1ULL << (idx)))
 
 
 void printBinary(uint64_t num) {
@@ -59,8 +56,7 @@ int getUnicode(int c) {
 
     else if ((c & 0xE0) == 0xC0){
         int c2 = getchar();
-        printBinary(c);
-        printBinary(c2);
+       
         int unicode = ((c & 0x1F) << 6) | (c2 & 0x3F);
         return unicode;
 
@@ -71,13 +67,7 @@ int getUnicode(int c) {
 
 int getIndex(int c){
     //printf("%d\n", c);
-    if (c >= 'A' && c <= 'Z'){
-        return c - 'A';
-    }
-    else if (c >= 'a' && c <= 'z'){
-        return c - 'a';
-    }
-    else if (c >= CYR_A && c <= CYR_YA){
+    if (c >= CYR_A && c <= CYR_YA){
         if (c - CYR_A > 6){
             return (c - CYR_A) + 1;
         }
@@ -119,7 +109,6 @@ uint64_t generateInCorrectMask(){
 
 enum states{
     IN_WORD,
-    MAYBE_WORD,
     OUT_WORD
 };
 
