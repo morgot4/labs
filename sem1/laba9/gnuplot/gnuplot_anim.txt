@@ -1,0 +1,19 @@
+set size ratio 1
+set parametric
+set grid
+set xzeroaxis lt -1
+set yzeroaxis lt -1
+set xrange [-40:40]
+set yrange [-40:40]
+set object 1 circle front at -10,-10 size 10 fillcolor rgb "black" lw 1
+set object 2 circle front at -20,-20 size 10 fillcolor rgb "black" lw 1                                                                                              
+
+set term gif size 1200,900 animate delay 25 optimize
+set output "Trajectory.gif"
+
+file = "C:\\Users\\Fedor\\Desktop\\VScodeProjects\\StudyC\\lessons\\laba9\\gnuplot\\position.txt"
+
+do for [i=0:52] {
+   plot file every ::0::i with linespoints pt 7 ps 1 lw 0.5 title "Траектория"
+}
+set output
