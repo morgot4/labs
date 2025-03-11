@@ -41,7 +41,7 @@ bool is_empty(queue* queue){
     return false;
 }
 
-bool qudl_push_back(queue* queue, double value){
+bool push_back(queue* queue, double value){
     if (queue->max_len == queue->len){
        return false;
     }
@@ -52,7 +52,7 @@ bool qudl_push_back(queue* queue, double value){
     
 }
 
-double qudl_pop_front(queue* queue){
+double pop_front(queue* queue){
     if (is_empty(queue)){
         perror("queue is empty");
     }
@@ -81,11 +81,11 @@ void print_queue(queue* queue){
 
 int main(void){
     queue *queue = init(100);
-    qudl_push_back(queue, 1);
-    qudl_push_back(queue, 2);
-    qudl_push_back(queue, 3);
+    push_back(queue, 1);
+    push_back(queue, 2);
+    push_back(queue, 3);
     print_queue(queue);
-    double value = qudl_pop_front(queue);
+    double value =pop_front(queue);
     printf("%f\n", value);
     print_queue(queue);
 
